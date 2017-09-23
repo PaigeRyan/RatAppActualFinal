@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="doperatz.rattracker.LoginActivity">
+
+    <EditText
+        android:id="@+id/EnterEmailBox"
+        android:layout_width="271dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Please enter your username."
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="95dp" />
+
+    <EditText
+        android:id="@+id/EnterPasswordBox"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Please enter your password."
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="164dp" />
+
+    <Button
+        android:id="@+id/CheckLoginButton"
+        android:layout_width="166dp"
+        android:layout_height="68dp"
+        android:text="Log me in!"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <Button
+        android:id="@+id/LoginScreenCancelButton"
+        android:layout_width="126dp"
+        android:layout_height="55dp"
+        android:text="Cancel"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="385dp" />
+</android.support.constraint.ConstraintLayout>
