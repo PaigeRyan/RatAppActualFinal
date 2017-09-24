@@ -27,27 +27,11 @@ public class Model {
     /*
     Hard Coded user with
     username: user
-    password: password
+    password: pass
     Just for this milestone
      */
     private void loadDefaultData() {
         _users.add(new User("user", "pass"));
-    }
-
-    /**
-     * Checks to see if the user exists in the system
-     * using the users data
-     *
-     * @param username the users username
-     * @param password the users passwrod
-     * @return If it exists in the system
-     */
-    public boolean isUser(String username, String password) {
-        if (_users.contains(new User(username, password))) {
-            return true;
-        } else  {
-            return false;
-        }
     }
 
     /**

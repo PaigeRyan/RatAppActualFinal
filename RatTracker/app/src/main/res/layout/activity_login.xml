@@ -13,8 +13,14 @@
         android:ems="10"
         android:inputType="text"
         android:text="Please enter your username."
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="95dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/EnterPasswordBox" />
 
     <EditText
         android:id="@+id/EnterPasswordBox"
@@ -23,22 +29,41 @@
         android:ems="10"
         android:inputType="text"
         android:text="Please enter your password."
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="164dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/LoginScreenCancelButton"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
         android:id="@+id/CheckLoginButton"
         android:layout_width="166dp"
         android:layout_height="68dp"
         android:text="Log me in!"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="250dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="167dp"
+        android:onClick="onLoginPressed"/>
 
     <Button
         android:id="@+id/LoginScreenCancelButton"
         android:layout_width="126dp"
         android:layout_height="55dp"
         android:text="Cancel"
-        tools:layout_editor_absoluteX="129dp"
-        tools:layout_editor_absoluteY="385dp" />
+        android:onClick="onCancelPressed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/CheckLoginButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
+
 </android.support.constraint.ConstraintLayout>
