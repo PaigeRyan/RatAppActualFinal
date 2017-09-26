@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "975068369896",
+    "firebase_url": "https://ratappdata.firebaseio.com",
+    "project_id": "ratappdata",
+    "storage_bucket": "ratappdata.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975068369896:android:8d61cb747d87c645",
+        "android_client_info": {
+          "package_name": "doperatz.rattracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975068369896-af5gt8n5c2cplhd5vs31rvf0rfjkkbk6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwS5lLWeIv27w9lj_AimYmSt-QTYicoQM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
