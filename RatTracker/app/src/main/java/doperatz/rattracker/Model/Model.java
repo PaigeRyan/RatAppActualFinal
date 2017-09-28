@@ -1,5 +1,7 @@
 package doperatz.rattracker.Model;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
