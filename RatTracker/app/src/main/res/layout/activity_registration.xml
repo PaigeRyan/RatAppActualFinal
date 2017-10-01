@@ -58,7 +58,7 @@
         android:layout_width="126dp"
         android:layout_height="55dp"
         android:text="Cancel"
-        android:onClick="onCancelPressed"
+        android:onClick="onRegisterCancelPressed"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"

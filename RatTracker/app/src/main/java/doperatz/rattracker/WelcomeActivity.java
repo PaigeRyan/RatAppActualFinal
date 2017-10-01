@@ -30,5 +30,10 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    protected void onSignUpPressed(View view) {
+        Intent intent = new Intent(this, RegistrationActivity.class);
+        startActivity(intent);
+    }
+
 
 }
