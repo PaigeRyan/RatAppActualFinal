@@ -1,5 +1,8 @@
 package doperatz.rattracker.Model;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by agysc on 9/23/2017.
  */
@@ -7,7 +10,7 @@ package doperatz.rattracker.Model;
 public class User {
     private String _name;
     private String _password;
-
+    public static List<String> possibleUserTypes = Arrays.asList("Admin", "Basic User");
 
     public User(String name, String password) {
         _name = name;

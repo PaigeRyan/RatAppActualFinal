@@ -20,7 +20,9 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/RegisterPasswordBox" />
+        app:layout_constraintBottom_toTopOf="@+id/RegisterPasswordBox"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <EditText
         android:id="@+id/RegisterPasswordBox"
@@ -38,7 +40,9 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintVertical_bias="0.716" />
+        app:layout_constraintVertical_bias="0.543"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <Button
         android:id="@+id/RegistrationButton"
@@ -50,8 +54,10 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="167dp"
-        android:onClick="onRegistrationPressed"/>
+        android:layout_marginBottom="143dp"
+        android:onClick="onRegistrationPressed"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <Button
         android:id="@+id/RegistrationCancelButton"
@@ -66,6 +72,21 @@
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/RegistrationButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <Spinner
+        android:id="@+id/accountSpinner"
+        android:layout_width="197dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/RegistrationCancelButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegisterUsernameBox" />
 
 </android.support.constraint.ConstraintLayout>

@@ -29,6 +29,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private User user;
+    private Spinner accountTypeSpinner;
 
 
     @Override
@@ -37,6 +38,11 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         username = (EditText) findViewById(R.id.RegisterUsernameBox);
         password = (EditText) findViewById(R.id.RegisterPasswordBox);
+        accountTypeSpinner = (Spinner) findViewById(R.id.accountSpinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.possibleUserTypes);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        accountTypeSpinner.setAdapter(adapter);
     }
 
     protected void onRegisterCancelPressed(View view) {
@@ -45,7 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    protected void onRegisterPressed(View view) {
+    protected void onRegistrationPressed(View view) {
         Log.d("Edit", "Register pressed");
         Model model = Model.getInstance();
         user = new User(username.getText().toString(), password.getText().toString());
