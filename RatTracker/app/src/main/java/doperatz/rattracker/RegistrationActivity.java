@@ -59,7 +59,8 @@ public class RegistrationActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), "User already exists.", Toast.LENGTH_SHORT);
             toast.show();
         } else {
-            Intent intent = new Intent(this, StartUpActivity.class);
+            model.addUser(user);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
     }
