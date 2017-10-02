@@ -33,7 +33,7 @@ public class Model {
     Just for this milestone
      */
     private void loadDefaultData() {
-        _users.add(new User("user", "pass"));
+        _users.add(new User("user", "pass", false));
     }
 
     /**
@@ -66,8 +66,8 @@ public class Model {
      * @param name the user's name
      * @param password the user's password
      */
-    public void addUser(String name, String password) {
-        _users.add(new User(name, password));
+    public void addUser(String name, String password, boolean isAdmin) {
+        _users.add(new User(name, password, isAdmin));
     }
 
 

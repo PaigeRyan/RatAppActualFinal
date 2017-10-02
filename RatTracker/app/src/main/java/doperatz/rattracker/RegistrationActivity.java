@@ -54,7 +54,9 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onRegistrationPressed(View view) {
         Log.d("Edit", "Register pressed");
         Model model = Model.getInstance();
-        user = new User(username.getText().toString(), password.getText().toString());
+        boolean isAdmin = accountTypeSpinner.getSelectedItem().toString().equals("Admin");
+
+        user = new User(username.getText().toString(), password.getText().toString(), isAdmin);
         if (model.isUser(user)) {
             Toast toast = Toast.makeText(getApplicationContext(), "User already exists.", Toast.LENGTH_SHORT);
             toast.show();

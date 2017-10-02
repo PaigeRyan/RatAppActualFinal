@@ -10,11 +10,17 @@ import java.util.List;
 public class User {
     private String _name;
     private String _password;
+    private boolean _isAdmin;
     public static List<String> possibleUserTypes = Arrays.asList("Admin", "Basic User");
 
-    public User(String name, String password) {
+    public User(String name, String password, boolean isAdmin) {
         _name = name;
         _password = password;
+        _isAdmin = isAdmin;
+    }
+
+    public User(String name, String password) {
+        this(name, password, false);
     }
 
     public String get_password() {
@@ -24,7 +30,8 @@ public class User {
         this._password = _password;
     }
 
-
+    public boolean getIsAdmin() { return _isAdmin; }
+    public void setIsAdmin(boolean isAdmin) { _isAdmin = isAdmin; }
 
     public String getName() {
         return _name;
