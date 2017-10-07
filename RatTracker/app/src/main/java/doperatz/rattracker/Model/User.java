@@ -55,8 +55,7 @@ public class User {
     /**
      * Overrides the equals method
      * to check eqaulity based on the
-     * Users's username and
-     * password
+     * Users's username
      *
      * @param o The user your want to
      *          pass in
@@ -72,12 +71,15 @@ public class User {
             return false;
         }
 
-        if ((((User) o)._name.equals(_name)) && ((User) o)._password.equals(_password)) {
+        if ((((User) o)._name.equals(_name))) {
             return true;
         } else {
             return false;
         }
     }
+
+
+
 
 
 

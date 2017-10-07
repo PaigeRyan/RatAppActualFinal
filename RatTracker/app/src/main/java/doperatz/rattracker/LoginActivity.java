@@ -44,7 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         Log.d("Edit", "Login Info");
         Model model = Model.getInstance();
         user = new User(username.getText().toString(), password.getText().toString());
-        if (model.isUser(user)) {
+
+        if (model.checkPassword(user)) {
             Intent intent = new Intent(this, StartUpActivity.class);
             startActivity(intent);
         } else {
