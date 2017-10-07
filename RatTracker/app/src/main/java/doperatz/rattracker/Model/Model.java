@@ -38,11 +38,13 @@ public class Model {
 
     //list of Users in the system
     private List<User> _users;
+    private List<RatReport> _reports;
 
 
     //Constructor
     private Model() {
         _users = new ArrayList<User>();
+        _reports = new ArrayList<RatReport>();
         loadDefaultData();
     }
 
@@ -54,6 +56,11 @@ public class Model {
      */
     private void loadDefaultData() {
         _users.add(new User("user", "pass", false));
+        _reports.add(new RatReport("31464025","9/4/2015 0:00", "1-2 Family Dwelling", "10310", "758 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
+        _reports.add(new RatReport("31434342","9/5/2015 0:00", "1-2 Family Dwelling", "10120", "759 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
+        _reports.add(new RatReport("31464025","9/6/2015 0:00", "1-2 Family Dwelling", "10332", "760 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
+        _reports.add(new RatReport("31464025","9/7/2015 0:00", "1-2 Family Dwelling", "10340", "761 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
+        _reports.add(new RatReport("31464025","9/8/2015 0:00", "1-2 Family Dwelling", "12340", "762 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
     }
 
 
@@ -81,6 +88,8 @@ public class Model {
     public void addUser(User user) {
         _users.add(user);
     }
+
+    public void addReport(RatReport report) {_reports.add(report); }
 
     /**
      * Adds a user using user properties

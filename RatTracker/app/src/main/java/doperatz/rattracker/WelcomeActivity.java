@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import doperatz.rattracker.Model.Model;
+import doperatz.rattracker.Model.RatReport;
 import doperatz.rattracker.R;
 
 public class WelcomeActivity extends AppCompatActivity {
