@@ -23,8 +23,11 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".StartUpActivity" />
-        <activity android:name=".RegistrationActivity">
-        </activity>
+        <activity android:name=".RegistrationActivity"></activity>
+        <activity
+            android:name=".ReportListViewActivity"
+            android:label="@string/title_activity_report_list_view"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

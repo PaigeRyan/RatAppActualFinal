@@ -29,4 +29,9 @@ public class StartUpActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
     }
+
+    protected void onViewReportListPressed(View view) {
+        Intent intent = new Intent(this, ReportListViewActivity.class);
+        startActivity(intent);
+    }
 }

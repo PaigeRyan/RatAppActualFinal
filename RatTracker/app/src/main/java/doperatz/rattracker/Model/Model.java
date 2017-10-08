@@ -89,6 +89,12 @@ public class Model {
         _users.add(user);
     }
 
+    /**
+     * get the rat reports
+     * @return a list of the rat reports in the app
+     */
+    public List<RatReport> getRatReports() { return _reports; }
+
     public void addReport(RatReport report) {_reports.add(report); }
 
     /**
