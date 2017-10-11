@@ -1,5 +1,6 @@
 package doperatz.rattracker.Model;
 
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -10,18 +11,23 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import doperatz.rattracker.LoginActivity;
 import doperatz.rattracker.R;
 
+import static android.R.attr.paddingLeft;
 import static android.R.attr.src;
 
 /**
@@ -63,7 +69,24 @@ public class Model {
         _reports.add(new RatReport("31464025","9/8/2015 0:00", "1-2 Family Dwelling", "12340", "762 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
     }
 
+    public void loadRatData(Context context) {
 
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("ratData.csv")));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] ReportInfo = line.split(",");
+                for (String item : ReportInfo) {
+                    System.out.print(item);
+                }
+
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+
+    }
 
     /**
      * checks to see if the user exists in the system

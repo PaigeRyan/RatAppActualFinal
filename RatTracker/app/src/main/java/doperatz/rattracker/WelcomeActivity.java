@@ -48,6 +48,7 @@ public class WelcomeActivity extends AppCompatActivity {
         Model model = Model.getInstance();
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+        //model.loadRatData(this);
 
     }
 
