@@ -45,15 +45,15 @@ public class ListDetailViewActivity extends Activity {
 
 
 
-        uniqueKeyView.setText("" + thisReport.getUniqueKey());
-        createdDateView.setText("" + thisReport.getCreatedDate());
-        locationTypeView.setText("" + thisReport.getLocationType());
-        incidentZipView.setText("" + thisReport.getIncidentZip());
-        incidentAddressView.setText("" + thisReport.getIncidentAddress());
-        cityView.setText("" + thisReport.getCity());
-        boroughView.setText("" + thisReport.getBorough());
-        latitudeView.setText("" + thisReport.getLatitude());
-        longitudeView.setText("" + thisReport.getLongitude());
+        uniqueKeyView.setText("Unique Key: " + thisReport.getUniqueKey());
+        createdDateView.setText("Created Data: " + thisReport.getCreatedDate());
+        locationTypeView.setText("Location Type: " + thisReport.getLocationType());
+        incidentZipView.setText("Incident Zip: " + thisReport.getIncidentZip());
+        incidentAddressView.setText("Incident Address: " + thisReport.getIncidentAddress());
+        cityView.setText("City: " + thisReport.getCity());
+        boroughView.setText("Borough: " + thisReport.getBorough());
+        latitudeView.setText("Latitude: " + thisReport.getLatitude());
+        longitudeView.setText("Longitude: " + thisReport.getLongitude());
     }
 
 

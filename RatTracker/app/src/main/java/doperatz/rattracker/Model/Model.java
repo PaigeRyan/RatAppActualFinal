@@ -62,11 +62,13 @@ public class Model {
      */
     private void loadDefaultData() {
         _users.add(new User("user", "pass", false));
+        /*
         _reports.add(new RatReport("31464025","9/4/2015 0:00", "1-2 Family Dwelling", "10310", "758 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
         _reports.add(new RatReport("31434342","9/5/2015 0:00", "1-2 Family Dwelling", "10120", "759 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
         _reports.add(new RatReport("31464025","9/6/2015 0:00", "1-2 Family Dwelling", "10332", "760 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
         _reports.add(new RatReport("31464025","9/7/2015 0:00", "1-2 Family Dwelling", "10340", "761 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
         _reports.add(new RatReport("31464025","9/8/2015 0:00", "1-2 Family Dwelling", "12340", "762 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
+        */
     }
 
     public void loadRatData(Context context) {
@@ -76,8 +78,11 @@ public class Model {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] ReportInfo = line.split(",");
-                for (String item : ReportInfo) {
-                    System.out.print(item);
+                if (ReportInfo.length == 9) {
+                    RatReport newReport = new RatReport(ReportInfo[0], ReportInfo[1],
+                            ReportInfo[2], ReportInfo[3], ReportInfo[4], ReportInfo[5],
+                            ReportInfo[6], ReportInfo[7], ReportInfo[8]);
+                    _reports.add(newReport);
                 }
 
             }
