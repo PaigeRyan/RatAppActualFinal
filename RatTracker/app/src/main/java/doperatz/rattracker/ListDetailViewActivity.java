@@ -1,7 +1,9 @@
 package doperatz.rattracker;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -27,6 +29,11 @@ public class ListDetailViewActivity extends Activity {
     TextView latitudeView;
     TextView longitudeView;
 
+    /**
+     * On Creation of ListDetailView, load text views with information
+     * specific to the report in question.
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_detail_view);
@@ -54,6 +61,12 @@ public class ListDetailViewActivity extends Activity {
         boroughView.setText("Borough: " + thisReport.getBorough());
         latitudeView.setText("Latitude: " + thisReport.getLatitude());
         longitudeView.setText("Longitude: " + thisReport.getLongitude());
+    }
+
+    protected void onBackPressed(View view) {
+        Log.d("Edit", "Back");
+        Intent intent = new Intent(this, ListViewActivity.class);
+        startActivity(intent);
     }
 
 

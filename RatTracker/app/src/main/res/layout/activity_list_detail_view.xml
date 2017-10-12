@@ -1,59 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/uniqueKeyView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/createdDateView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/locationTypeView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/incidentZipView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/incidentAddressView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/cityView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/boroughView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/latitudeView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/longitudeView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
         android:text="TextView" />
+
+    <Button
+        android:id="@+id/ListDetailBackButton"
+        android:layout_width="126dp"
+        android:layout_height="55dp"
+        android:text="Back"
+        android:onClick="onBackPressed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
 </LinearLayout>

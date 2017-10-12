@@ -58,19 +58,17 @@ public class Model {
     Hard Coded user with
     username: user
     password: pass
-    Just for this milestone
+    Meant for easy access to internals of application to test without creating a new user manually.
      */
     private void loadDefaultData() {
         _users.add(new User("user", "pass", false));
-        /*
-        _reports.add(new RatReport("31464025","9/4/2015 0:00", "1-2 Family Dwelling", "10310", "758 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
-        _reports.add(new RatReport("31434342","9/5/2015 0:00", "1-2 Family Dwelling", "10120", "759 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
-        _reports.add(new RatReport("31464025","9/6/2015 0:00", "1-2 Family Dwelling", "10332", "760 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
-        _reports.add(new RatReport("31464025","9/7/2015 0:00", "1-2 Family Dwelling", "10340", "761 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
-        _reports.add(new RatReport("31464025","9/8/2015 0:00", "1-2 Family Dwelling", "12340", "762 POST AVENUE", "STATEN ISLAND", "STATEN ISLAND", "40.63123555" ,"-74.1268776"));
-        */
     }
 
+    /**
+     * Loads all rat data from the csv file into the list of rat reports.
+     * Called on login.
+     * @param context
+     */
     public void loadRatData(Context context) {
 
         try {
@@ -123,6 +121,10 @@ public class Model {
      */
     public List<RatReport> getRatReports() { return _reports; }
 
+    /**
+     * Adds a new rat report to the list of reports
+     * @param report
+     */
     public void addReport(RatReport report) {_reports.add(report); }
 
     /**
@@ -135,7 +137,12 @@ public class Model {
         _users.add(new User(name, password, isAdmin));
     }
 
-
+    /**
+     * Given a user attempting to login, checks against original user's password
+     * for match to allow logging in.
+     * @param checkedUser
+     * @return whether or not passwords match and user can log in
+     */
     public boolean checkPassword(User checkedUser) {
         for (User runningUser : _users) {
             if (checkedUser.equals(runningUser)) {

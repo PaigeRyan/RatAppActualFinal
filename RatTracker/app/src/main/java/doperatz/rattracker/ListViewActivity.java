@@ -35,10 +35,12 @@ public class ListViewActivity extends Activity {
         ratListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long longboy) {
-                Intent intent = new Intent(ListViewActivity.this, ListDetailViewActivity.class);
                 RatReport thisReport = (RatReport)ratListView.getItemAtPosition(i);
-                intent.putExtra("Report", thisReport);
-                startActivity(intent);
+                if (!thisReport.getCity().equals("City")) {
+                    Intent intent = new Intent(ListViewActivity.this, ListDetailViewActivity.class);
+                    intent.putExtra("Report", thisReport);
+                    startActivity(intent);
+                }
             }
         });
     }
