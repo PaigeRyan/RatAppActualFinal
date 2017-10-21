@@ -45,12 +45,14 @@ public class Model {
     //list of Users in the system
     private List<User> _users;
     private List<RatReport> _reports;
+    private List<RatReport> _recentReports;
 
 
     //Constructor
     private Model() {
         _users = new ArrayList<User>();
         _reports = new ArrayList<RatReport>();
+        _recentReports = new ArrayList<RatReport>();
         loadDefaultData();
     }
 

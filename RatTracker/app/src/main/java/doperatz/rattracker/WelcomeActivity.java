@@ -36,8 +36,6 @@ import doperatz.rattracker.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 
-    FirebaseFirestore appDatabase = FirebaseFirestore.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
