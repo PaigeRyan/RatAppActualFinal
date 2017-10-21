@@ -24,7 +24,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".StartUpActivity" />
         <activity android:name=".RegistrationActivity" />
-            <activity android:name=".ListViewActivity" />
+        <activity android:name=".ListViewActivity" />
+        <activity android:name=".NewReportActivity" />
         <activity android:name=".ListDetailViewActivity">
         </activity>
     </application>

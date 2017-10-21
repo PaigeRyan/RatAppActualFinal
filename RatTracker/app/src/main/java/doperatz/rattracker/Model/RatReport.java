@@ -39,8 +39,8 @@ public class RatReport implements Parcelable {
     public String getLongitude() {
         return longitude;
     }
-
-    private String uniqueKey;
+    private static int runningKey = 1;
+    private int uniqueKey;
     private String createdDate;
     private String locationType;
     private String incidentZip;
@@ -52,9 +52,10 @@ public class RatReport implements Parcelable {
 
 
 
-    public RatReport(String uniqueKey, String createdDate, String locationType, String incidentZip,
+    public RatReport(String createdDate, String locationType, String incidentZip,
                      String incidentAddress, String city, String borough, String latitude, String longitude) {
-        this.uniqueKey = uniqueKey;
+        this.uniqueKey = runningKey;
+        runningKey++;
         this.createdDate = createdDate;
         this.locationType = locationType;
         this.incidentAddress = incidentAddress;
@@ -65,12 +66,12 @@ public class RatReport implements Parcelable {
         this.longitude = longitude;
     }
 
-    public String getUniqueKey() {
+    public int getUniqueKey() {
         return uniqueKey;
     }
 
     public String[] getInfo() {
-        String[] word = {uniqueKey, createdDate, locationType, incidentZip, incidentAddress, city, borough, latitude, longitude};
+        String[] word = {Integer.toString(uniqueKey), createdDate, locationType, incidentZip, incidentAddress, city, borough, latitude, longitude};
         return word;
     }
 
@@ -100,7 +101,7 @@ public class RatReport implements Parcelable {
     };
 
     private RatReport(Parcel in) {
-        uniqueKey = in.readString();
+        uniqueKey = Integer.parseInt(in.readString());
         createdDate = in.readString();
         locationType = in.readString();
         incidentZip = in.readString();

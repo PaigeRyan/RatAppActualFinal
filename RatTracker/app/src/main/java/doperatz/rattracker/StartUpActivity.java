@@ -34,4 +34,9 @@ public class StartUpActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ListViewActivity.class);
         startActivity(intent);
     }
+
+    protected void onAddReportPressed(View view) {
+        Intent intent = new Intent(this, NewReportActivity.class);
+        startActivity(intent);
+    }
 }

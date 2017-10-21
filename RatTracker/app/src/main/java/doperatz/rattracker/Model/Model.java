@@ -62,6 +62,10 @@ public class Model {
      */
     private void loadDefaultData() {
         _users.add(new User("user", "pass", false));
+        _users.add(new User("MYu", "mindgame", true));
+        _users.add(new User("AJensen", "augmentation", true));
+        _users.add(new User("GFreeman", "blackmesa", false));
+        _users.add(new User("ARyan", "wouldyoukindly", false));
     }
 
     /**
@@ -77,7 +81,7 @@ public class Model {
             while ((line = reader.readLine()) != null) {
                 String[] ReportInfo = line.split(",");
                 if (ReportInfo.length == 9) {
-                    RatReport newReport = new RatReport(ReportInfo[0], ReportInfo[1],
+                    RatReport newReport = new RatReport(ReportInfo[1],
                             ReportInfo[2], ReportInfo[3], ReportInfo[4], ReportInfo[5],
                             ReportInfo[6], ReportInfo[7], ReportInfo[8]);
                     _reports.add(newReport);

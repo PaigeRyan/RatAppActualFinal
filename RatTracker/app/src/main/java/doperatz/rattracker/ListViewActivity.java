@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -43,6 +44,12 @@ public class ListViewActivity extends Activity {
                 }
             }
         });
+    }
+
+    protected void onListBackPressed(View view) {
+        Log.d("Edit", "ListBack");
+        Intent intent = new Intent(this, StartUpActivity.class);
+        startActivity(intent);
     }
 
 
