@@ -86,13 +86,21 @@ public class Model {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] ReportInfo = line.split(",");
+                Date newDate;
+                if (!ReportInfo[1].equals("Created Date")) {
+                    String[] dateString = ReportInfo[1].split("/");
+                    dateString[2] = dateString[2].substring(0, 4);
+                    newDate = new Date(Integer.parseInt(dateString[0]), Integer.parseInt(dateString[1]), Integer.parseInt(dateString[2]));
+                } else {
+                    newDate = new Date(1,1,1);
+                }
                 if (ReportInfo.length == 9) {
-                    RatReport newReport = new RatReport(new Date(ReportInfo[1]),
+
+                    RatReport newReport = new RatReport(newDate,
                             ReportInfo[2], ReportInfo[3], ReportInfo[4], ReportInfo[5],
                             ReportInfo[6], ReportInfo[7], ReportInfo[8]);
                     _reports.add(newReport);
                 }
-
             }
             for (int i = _reports.size() - 15; i < _reports.size(); i++) {
                 _recentReports.add(_reports.get(i));
