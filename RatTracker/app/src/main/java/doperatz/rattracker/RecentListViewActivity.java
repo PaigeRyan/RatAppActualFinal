@@ -27,7 +27,7 @@ public class RecentListViewActivity extends Activity {
         setContentView(R.layout.activity_list_view);
         Model model = Model.getInstance();
         View recyclerView = findViewById(R.id.RatListView);
-        final ListAdapter ratListAdapter = new ArrayAdapter<RatReport>(this, android.R.layout.simple_list_item_1, model.getRatReports());
+        final ListAdapter ratListAdapter = new ArrayAdapter<RatReport>(this, android.R.layout.simple_list_item_1, model.getRecentRatReports());
         ratListView = (ListView) findViewById(R.id.RatListView);
         ratListView.setAdapter(ratListAdapter);
 
