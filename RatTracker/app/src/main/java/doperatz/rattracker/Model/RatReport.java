@@ -3,12 +3,15 @@ package doperatz.rattracker.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  * Created by Josh on 10/7/2017.
  */
 
 public class RatReport implements Parcelable {
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
@@ -41,7 +44,7 @@ public class RatReport implements Parcelable {
     }
     private static int runningKey = 1;
     private int uniqueKey;
-    private String createdDate;
+    private Date createdDate;
     private String locationType;
     private String incidentZip;
     private String incidentAddress;
@@ -52,7 +55,7 @@ public class RatReport implements Parcelable {
 
 
 
-    public RatReport(String createdDate, String locationType, String incidentZip,
+    public RatReport(Date createdDate, String locationType, String incidentZip,
                      String incidentAddress, String city, String borough, String latitude, String longitude) {
         this.uniqueKey = runningKey;
         runningKey++;
@@ -71,7 +74,7 @@ public class RatReport implements Parcelable {
     }
 
     public String[] getInfo() {
-        String[] word = {Integer.toString(uniqueKey), createdDate, locationType, incidentZip, incidentAddress, city, borough, latitude, longitude};
+        String[] word = {Integer.toString(uniqueKey), createdDate.toString(), locationType, incidentZip, incidentAddress, city, borough, latitude, longitude};
         return word;
     }
 
@@ -102,7 +105,7 @@ public class RatReport implements Parcelable {
 
     private RatReport(Parcel in) {
         uniqueKey = Integer.parseInt(in.readString());
-        createdDate = in.readString();
+        createdDate = (Date) in.readSerializable();
         locationType = in.readString();
         incidentZip = in.readString();
         incidentAddress = in.readString();
