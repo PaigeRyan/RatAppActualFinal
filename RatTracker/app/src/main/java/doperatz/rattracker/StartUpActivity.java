@@ -44,4 +44,9 @@ public class StartUpActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RecentListViewActivity.class);
         startActivity(intent);
     }
+
+    protected void onVisualizeDataPressed(View view) {
+        Intent intent = new Intent(this, DateRangeActivity.class);
+        startActivity(intent);
+    }
 }
