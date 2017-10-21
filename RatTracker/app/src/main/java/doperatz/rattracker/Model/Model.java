@@ -1,6 +1,7 @@
 package doperatz.rattracker.Model;
 
 import android.content.Context;
+import java.util.Date;
 import android.content.res.AssetManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -86,7 +87,7 @@ public class Model {
             while ((line = reader.readLine()) != null) {
                 String[] ReportInfo = line.split(",");
                 if (ReportInfo.length == 9) {
-                    RatReport newReport = new RatReport(ReportInfo[1],
+                    RatReport newReport = new RatReport(new Date(ReportInfo[1]),
                             ReportInfo[2], ReportInfo[3], ReportInfo[4], ReportInfo[5],
                             ReportInfo[6], ReportInfo[7], ReportInfo[8]);
                     _reports.add(newReport);
