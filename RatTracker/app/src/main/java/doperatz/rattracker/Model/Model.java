@@ -46,6 +46,7 @@ public class Model {
     private List<User> _users;
     private List<RatReport> _reports;
     private List<RatReport> _recentReports;
+    private boolean addedDefaultData;
 
 
     //Constructor
@@ -76,7 +77,9 @@ public class Model {
      * @param context
      */
     public void loadRatData(Context context) {
-
+        if (addedDefaultData) {
+            return;
+        }
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("ratData.csv")));
             String line;
@@ -90,6 +93,12 @@ public class Model {
                 }
 
             }
+            for (int i = _reports.size() - 15; i < _reports.size(); i++) {
+                _recentReports.add(_reports.get(i));
+            }
+
+            addedDefaultData = true;
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -128,10 +137,20 @@ public class Model {
     public List<RatReport> getRatReports() { return _reports; }
 
     /**
+     * get the most recent rat reports
+     * @return a list of the 15 most recent rat reports
+     */
+    public List<RatReport> getRecentRatReports() { return _recentReports; }
+
+    /**
      * Adds a new rat report to the list of reports
      * @param report
      */
-    public void addReport(RatReport report) {_reports.add(report); }
+    public void addReport(RatReport report) {
+        _reports.add(report);
+        _recentReports.remove(0);
+        _recentReports.add(report);
+    }
 
     /**
      * Adds a user using user properties
