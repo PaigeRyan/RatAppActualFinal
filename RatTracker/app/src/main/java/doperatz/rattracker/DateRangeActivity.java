@@ -29,6 +29,12 @@ public class DateRangeActivity extends AppCompatActivity {
     }
 
 
+    protected void onMapViewPressed(View view) {
+        Log.d("Edit", "Cancel");
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+
     protected void onDateRangeCancelPressed(View view) {
         Log.d("Edit", "Cancel");
         Intent intent = new Intent(this, StartUpActivity.class);

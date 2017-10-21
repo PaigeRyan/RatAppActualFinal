@@ -86,17 +86,9 @@ public class Model {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] ReportInfo = line.split(",");
-                Date newDate;
-                if (!ReportInfo[1].equals("Created Date")) {
-                    String[] dateString = ReportInfo[1].split("/");
-                    dateString[2] = dateString[2].substring(0, 4);
-                    newDate = new Date(Integer.parseInt(dateString[0]), Integer.parseInt(dateString[1]), Integer.parseInt(dateString[2]));
-                } else {
-                    newDate = new Date(1,1,1);
-                }
                 if (ReportInfo.length == 9) {
 
-                    RatReport newReport = new RatReport(newDate,
+                    RatReport newReport = new RatReport(ReportInfo[1],
                             ReportInfo[2], ReportInfo[3], ReportInfo[4], ReportInfo[5],
                             ReportInfo[6], ReportInfo[7], ReportInfo[8]);
                     _reports.add(newReport);

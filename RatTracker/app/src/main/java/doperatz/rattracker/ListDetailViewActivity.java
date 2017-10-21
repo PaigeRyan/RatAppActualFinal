@@ -53,7 +53,7 @@ public class ListDetailViewActivity extends Activity {
 
 
         uniqueKeyView.setText("Unique Key: " + thisReport.getUniqueKey());
-        createdDateView.setText("Created Data: " + thisReport.getCreatedDate());
+        createdDateView.setText("Created Date: " + thisReport.getCreatedDate());
         locationTypeView.setText("Location Type: " + thisReport.getLocationType());
         incidentZipView.setText("Incident Zip: " + thisReport.getIncidentZip());
         incidentAddressView.setText("Incident Address: " + thisReport.getIncidentAddress());

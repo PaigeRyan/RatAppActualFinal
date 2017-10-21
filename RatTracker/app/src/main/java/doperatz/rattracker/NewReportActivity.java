@@ -46,8 +46,8 @@ public class NewReportActivity extends AppCompatActivity {
     protected void onSubmitReportPressed(View view) {
         Log.d("Edit", "Submit");
 
-        Date newDate = new Date(date.getText().toString());
-        RatReport newReport = new RatReport(newDate, locationType.getText().toString(),
+
+        RatReport newReport = new RatReport(date.getText().toString(), locationType.getText().toString(),
                 incidentZip.getText().toString(), incidentAddress.getText().toString(), city.getText().toString(),
                 borough.getText().toString(), latitude.getText().toString(), longitude.getText().toString());
         model.addReport(newReport);
