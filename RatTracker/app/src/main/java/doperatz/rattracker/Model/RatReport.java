@@ -3,13 +3,6 @@ package doperatz.rattracker.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-import java.util.Date;
-
-/**
- * Created by Josh on 10/7/2017.
- */
-
 public class RatReport implements Parcelable {
     public String getUniqueKey() {
         return uniqueKey;
@@ -71,9 +64,8 @@ public class RatReport implements Parcelable {
         this.longitude = longitude;
     }
 
-    public String[] returnInfo() {
-        String[] word = {uniqueKey, createdDate, locationType, incidentZip, incidentAddress, city, borough, latitude, longitude};
-        return word;
+    private String[] returnInfo() {
+        return new String[] {uniqueKey, createdDate, locationType, incidentZip, incidentAddress, city, borough, latitude, longitude};
     }
 
     public String toString() {

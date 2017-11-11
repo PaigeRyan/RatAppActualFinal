@@ -1,24 +1,16 @@
 package doperatz.rattracker;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.common.graph.Graph;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 import doperatz.rattracker.Model.DateRange;
 import doperatz.rattracker.Model.Model;
@@ -26,24 +18,25 @@ import doperatz.rattracker.Model.RatReport;
 
 public class HistogramActivity extends AppCompatActivity {
 
-    Model model;
-    LineGraphSeries<DataPoint> series;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_histogram);
-        model = Model.getInstance();
+        Model model = Model.getInstance();
         Bundle bundle = getIntent().getExtras();
         DateRange date1 = bundle.getParcelable("Date1");
         DateRange date2 = bundle.getParcelable("Date2");
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (date1 == null || date2 == null) {
+            throw new IllegalArgumentException("Cannot accept null date.");
+        }
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ArrayList<Date> dateList = new ArrayList<>();
         int months = 1 + ((date2.getYear() - date1.getYear()) * 12) + (date2.getMonth() - date1.getMonth());
 
         for (RatReport report : model.getRatReports()) {
-            if (report.getCreatedDate() != "Created Date") {
+            if (!report.getCreatedDate().equals("Created Date")) {
                 String[] rDate = report.getCreatedDate().split("/");
 
                 //Conditional checks for appropriate date format before populating histogram.
@@ -77,8 +70,8 @@ public class HistogramActivity extends AppCompatActivity {
             monthTally[monthDiff]++;
         }
 
-        GraphView graph = (GraphView) findViewById(R.id.graph);
-        series = new LineGraphSeries<DataPoint>();
+        GraphView graph = findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
         for (int i = 0; i < months; i++) {
             x = i;
             y = monthTally[i];

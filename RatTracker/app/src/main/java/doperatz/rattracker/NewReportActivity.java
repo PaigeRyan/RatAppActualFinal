@@ -9,16 +9,8 @@ import android.widget.EditText;
 
 import com.google.firebase.database.DatabaseReference;
 
-import java.util.Date;
-
 import doperatz.rattracker.Model.Model;
 import doperatz.rattracker.Model.RatReport;
-
-/**
- * Created by Josh on 10/15/2017.
- */
-
-
 
 public class NewReportActivity extends AppCompatActivity {
     private EditText date;
@@ -29,8 +21,8 @@ public class NewReportActivity extends AppCompatActivity {
     private EditText borough;
     private EditText longitude;
     private EditText latitude;
-    private Model model = Model.getInstance();
-    DatabaseReference appRef = model.getDatabaseRef();
+    private final Model model = Model.getInstance();
+    private final DatabaseReference appRef = model.getDatabaseRef();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
