@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.Date;
 
 import doperatz.rattracker.Model.Model;
@@ -28,6 +30,7 @@ public class NewReportActivity extends AppCompatActivity {
     private EditText longitude;
     private EditText latitude;
     private Model model = Model.getInstance();
+    DatabaseReference appRef = model.getDatabaseRef();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +49,8 @@ public class NewReportActivity extends AppCompatActivity {
     protected void onSubmitReportPressed(View view) {
         Log.d("Edit", "Submit");
 
-
-        RatReport newReport = new RatReport(date.getText().toString(), locationType.getText().toString(),
+        String id = appRef.push().getKey();
+        RatReport newReport = new RatReport(id, date.getText().toString(), locationType.getText().toString(),
                 incidentZip.getText().toString(), incidentAddress.getText().toString(), city.getText().toString(),
                 borough.getText().toString(), latitude.getText().toString(), longitude.getText().toString());
         model.addReport(newReport);

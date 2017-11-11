@@ -78,6 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="View Histogram"
+        android:onClick="onHistogramPressed"
         tools:layout_constraintBottom_creator="1"
         android:layout_marginStart="71dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"

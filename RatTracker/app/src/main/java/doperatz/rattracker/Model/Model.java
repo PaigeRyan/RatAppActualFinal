@@ -5,9 +5,18 @@ import java.util.Date;
 import android.content.res.AssetManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -27,6 +36,7 @@ import java.util.Scanner;
 
 import doperatz.rattracker.LoginActivity;
 import doperatz.rattracker.R;
+import doperatz.rattracker.RegistrationActivity;
 
 import static android.R.attr.paddingLeft;
 import static android.R.attr.src;
@@ -41,6 +51,8 @@ public class Model {
     public static Model getInstance() {
         return _instance;
     }
+    private DatabaseReference mDatabase;
+    private DatabaseReference rDatabase;
 
 
     //list of Users in the system
@@ -55,8 +67,17 @@ public class Model {
         _users = new ArrayList<User>();
         _reports = new ArrayList<RatReport>();
         _recentReports = new ArrayList<RatReport>();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("ratreportdata");
+        rDatabase = FirebaseDatabase.getInstance().getReference("recentreportdata");
         loadDefaultData();
     }
+
+    public DatabaseReference getDatabaseRef() {
+        return this.mDatabase;
+    }
+
+
+    public DatabaseReference getRecentRef() { return this.rDatabase; }
 
     /*
     Hard Coded user with
@@ -70,6 +91,7 @@ public class Model {
         _users.add(new User("AJensen", "augmentation", true));
         _users.add(new User("GFreeman", "blackmesa", false));
         _users.add(new User("ARyan", "wouldyoukindly", false));
+
     }
 
     /**
@@ -77,6 +99,7 @@ public class Model {
      * Called on login.
      * @param context
      */
+    /*
     public void loadRatData(Context context) {
         if (addedDefaultData) {
             return;
@@ -87,15 +110,17 @@ public class Model {
             while ((line = reader.readLine()) != null) {
                 String[] ReportInfo = line.split(",");
                 if (ReportInfo.length == 9) {
-
-                    RatReport newReport = new RatReport(ReportInfo[1],
+                    String id = ratReportData.push().getKey();
+                    RatReport newReport = new RatReport(id, ReportInfo[1],
                             ReportInfo[2], ReportInfo[3], ReportInfo[4], ReportInfo[5],
                             ReportInfo[6], ReportInfo[7], ReportInfo[8]);
                     _reports.add(newReport);
+
                 }
             }
             for (int i = _reports.size() - 15; i < _reports.size(); i++) {
-                _recentReports.add(_reports.get(i));
+                RatReport workingReport = _reports.get(i);
+                _recentReports.add(workingReport);
             }
 
             addedDefaultData = true;
@@ -107,6 +132,7 @@ public class Model {
 
     }
 
+*/
     /**
      * checks to see if the user exists in the system
      * using a user object
@@ -132,6 +158,42 @@ public class Model {
     }
 
     /**
+     * Initialize the link between the app and the database and set up
+     * the value event listeners to detect changes of information.
+     */
+    public void loadInitialReports() {
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                _reports.clear();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    RatReport newReport = postSnapshot.getValue(RatReport.class);
+                    _reports.add(newReport);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+
+        rDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                _recentReports.clear();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    RatReport newReport = postSnapshot.getValue(RatReport.class);
+                    _recentReports.add(newReport);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    /**
      * get the rat reports
      * @return a list of the rat reports in the app
      */
@@ -148,9 +210,9 @@ public class Model {
      * @param report
      */
     public void addReport(RatReport report) {
-        _reports.add(report);
-        _recentReports.remove(0);
-        _recentReports.add(report);
+        // Create child in appropriate folder
+        mDatabase.child(report.getUniqueKey()).setValue(report);
+        rDatabase.child(report.getUniqueKey()).setValue(report);
     }
 
     /**

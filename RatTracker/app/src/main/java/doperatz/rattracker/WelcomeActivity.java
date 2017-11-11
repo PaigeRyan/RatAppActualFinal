@@ -40,13 +40,15 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        Model model = Model.getInstance();
+        model.loadInitialReports();
     }
 
     protected void onLoginPressed(View view) {
         Model model = Model.getInstance();
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
-        model.loadRatData(this);
+        //model.loadRatData(this);
 
     }
 

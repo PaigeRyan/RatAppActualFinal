@@ -30,7 +30,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginTop="49dp"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/editText"
+        app:layout_constraintLeft_toLeftOf="@+id/date1Field"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -41,11 +41,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        app:layout_constraintBottom_toTopOf="@+id/date2Field"
         android:layout_marginStart="7dp"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="18dp"
-        app:layout_constraintLeft_toLeftOf="@+id/editText3" />
+        app:layout_constraintLeft_toLeftOf="@+id/date2Field" />
 
     <Button
         android:id="@+id/mapViewButton"
@@ -79,7 +79,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/dateRangeCancelButton" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/date1Field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -93,7 +93,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/date2Field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

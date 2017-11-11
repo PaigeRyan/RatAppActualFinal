@@ -53,6 +53,13 @@
         <activity
             android:name=".DateRangeActivity"
             android:label="@string/title_activity_date_range"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RatMapActivity"
+            android:label="@string/title_activity_rat_map" />
+        <activity
+            android:name=".HistogramActivity"
+            android:label="@string/title_activity_histogram"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
