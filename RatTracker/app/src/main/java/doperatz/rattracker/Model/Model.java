@@ -232,6 +232,9 @@ public class Model {
      * @return whether or not passwords match and user can log in
      */
     public boolean checkPassword(User checkedUser) {
+        if (checkedUser == null) {
+            throw new IllegalArgumentException("User cannot be null.");
+        }
         for (User runningUser : _users) {
             if (checkedUser.equals(runningUser)) {
                 return checkedUser.get_password().equals(runningUser.get_password());
