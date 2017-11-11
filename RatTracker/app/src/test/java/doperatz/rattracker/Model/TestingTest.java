@@ -48,4 +48,9 @@ public class TestingTest {
         assertTrue(model.isUser(there));
         assertFalse(model.isUser(notThere));
     }
+
+    //Ethan's JUnit Tests for
+
+    //Rachel's JUnit Tests for
+    
 }
