@@ -28,7 +28,7 @@ public class RegistrationActivity extends AppCompatActivity {
         password = findViewById(R.id.RegisterPasswordBox);
         accountTypeSpinner = findViewById(R.id.accountSpinner);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.possibleUserTypes);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, User.possibleUserTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         accountTypeSpinner.setAdapter(adapter);
     }
