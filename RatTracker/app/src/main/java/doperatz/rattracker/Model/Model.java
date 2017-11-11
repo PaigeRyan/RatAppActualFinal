@@ -1,49 +1,17 @@
 package doperatz.rattracker.Model;
 
-import android.content.Context;
-import java.util.Date;
-import android.content.res.AssetManager;
-import android.support.annotation.NonNull;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.ChildEventListener;
+
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.Buffer;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
-import doperatz.rattracker.LoginActivity;
-import doperatz.rattracker.R;
-import doperatz.rattracker.RegistrationActivity;
-
-import static android.R.attr.paddingLeft;
-import static android.R.attr.src;
-
-/**
- * Created by agysc on 9/24/2017.
- */
 
 public class Model {
     //Singleton instance
@@ -51,22 +19,20 @@ public class Model {
     public static Model getInstance() {
         return _instance;
     }
-    private DatabaseReference mDatabase;
-    private DatabaseReference rDatabase;
+    private final DatabaseReference mDatabase;
+    private final DatabaseReference rDatabase;
 
 
     //list of Users in the system
-    private List<User> _users;
-    private List<RatReport> _reports;
-    private List<RatReport> _recentReports;
-    private boolean addedDefaultData;
-
+    private final List<User> _users;
+    private final List<RatReport> _reports;
+    private final List<RatReport> _recentReports;
 
     //Constructor
     private Model() {
-        _users = new ArrayList<User>();
-        _reports = new ArrayList<RatReport>();
-        _recentReports = new ArrayList<RatReport>();
+        _users = new ArrayList<>();
+        _reports = new ArrayList<>();
+        _recentReports = new ArrayList<>();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("ratreportdata");
         rDatabase = FirebaseDatabase.getInstance().getReference("recentreportdata");
         loadDefaultData();
@@ -75,8 +41,6 @@ public class Model {
     public DatabaseReference getDatabaseRef() {
         return this.mDatabase;
     }
-
-
     public DatabaseReference getRecentRef() { return this.rDatabase; }
 
     /*
@@ -87,52 +51,8 @@ public class Model {
      */
     private void loadDefaultData() {
         _users.add(new User("user", "pass", false));
-        _users.add(new User("MYu", "mindgame", true));
-        _users.add(new User("AJensen", "augmentation", true));
-        _users.add(new User("GFreeman", "blackmesa", false));
-        _users.add(new User("ARyan", "wouldyoukindly", false));
-
     }
 
-    /**
-     * Loads all rat data from the csv file into the list of rat reports.
-     * Called on login.
-     * @param context
-     */
-    /*
-    public void loadRatData(Context context) {
-        if (addedDefaultData) {
-            return;
-        }
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("ratData.csv")));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] ReportInfo = line.split(",");
-                if (ReportInfo.length == 9) {
-                    String id = ratReportData.push().getKey();
-                    RatReport newReport = new RatReport(id, ReportInfo[1],
-                            ReportInfo[2], ReportInfo[3], ReportInfo[4], ReportInfo[5],
-                            ReportInfo[6], ReportInfo[7], ReportInfo[8]);
-                    _reports.add(newReport);
-
-                }
-            }
-            for (int i = _reports.size() - 15; i < _reports.size(); i++) {
-                RatReport workingReport = _reports.get(i);
-                _recentReports.add(workingReport);
-            }
-
-            addedDefaultData = true;
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-
-    }
-
-*/
     /**
      * checks to see if the user exists in the system
      * using a user object
@@ -141,11 +61,7 @@ public class Model {
      * @return if the user exists in the system
      */
     public boolean isUser(User user) {
-        if (_users.contains(user)) {
-            return true;
-        } else  {
-            return false;
-        }
+        return (_users.contains(user));
     }
 
     /**
@@ -207,7 +123,7 @@ public class Model {
 
     /**
      * Adds a new rat report to the list of reports
-     * @param report
+     * @param report report to be added to database
      */
     public void addReport(RatReport report) {
         // Create child in appropriate folder
@@ -228,7 +144,7 @@ public class Model {
     /**
      * Given a user attempting to login, checks against original user's password
      * for match to allow logging in.
-     * @param checkedUser
+     * @param checkedUser user to check password against
      * @return whether or not passwords match and user can log in
      */
     public boolean checkPassword(User checkedUser) {

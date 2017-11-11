@@ -16,10 +16,9 @@ import doperatz.rattracker.Model.RatReport;
 
 public class RatMapActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
     private Model model;
-    DateRange date1;
-    DateRange date2;
+    private DateRange date1;
+    private DateRange date2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +38,11 @@ public class RatMapActivity extends FragmentActivity implements OnMapReadyCallba
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+
 
 
         for (RatReport report : model.getRatReports()) {
-            if (report.getCreatedDate() != "Created Date") {
+            if (!report.getCreatedDate().equals("Created Date")) {
                 String[] rDate = report.getCreatedDate().split("/");
 
                 //Conditional checks for appropriate date format before populating map.
@@ -56,11 +55,11 @@ public class RatMapActivity extends FragmentActivity implements OnMapReadyCallba
                     if (date1.compare(reportDate) <= 0 && date2.compare(reportDate) >= 0) {
                         String reportInfo = String.format("%s, %s", report.getUniqueKey(), report.getBorough());
                         LatLng reportPos = new LatLng(Double.parseDouble(report.getLatitude()), Double.parseDouble(report.getLongitude()));
-                        mMap.addMarker(new MarkerOptions().position(reportPos).title(reportInfo));
+                        googleMap.addMarker(new MarkerOptions().position(reportPos).title(reportInfo));
                     }
                 }
             }
         }
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(40, -75)));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(40, -75)));
     }
 }

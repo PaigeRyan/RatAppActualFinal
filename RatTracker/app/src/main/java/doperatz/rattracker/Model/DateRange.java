@@ -1,22 +1,11 @@
 package doperatz.rattracker.Model;
 
-import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.view.View;
-
-import java.util.Comparator;
-
-import doperatz.rattracker.DateRangeActivity;
-import doperatz.rattracker.HistogramActivity;
-
-/**
- * Created by Josh on 10/29/2017.
- */
 
 public class DateRange implements Parcelable {
 
-    private int month;
+
 
     public int getMonth() {
         return month;
@@ -30,8 +19,9 @@ public class DateRange implements Parcelable {
         return year;
     }
 
-    private int day;
-    private int year;
+    private final int month;
+    private final int day;
+    private final int year;
 
     public DateRange(int month, int day, int year) {
         this.day = day;

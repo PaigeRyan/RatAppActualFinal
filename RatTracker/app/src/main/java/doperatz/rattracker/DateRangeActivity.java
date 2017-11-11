@@ -22,13 +22,13 @@ public class DateRangeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_range);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         date1 = findViewById(R.id.date1Field);
         date2 = findViewById(R.id.date2Field);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,5 +86,5 @@ public class DateRangeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StartUpActivity.class);
         startActivity(intent);
     }
-
 }
+

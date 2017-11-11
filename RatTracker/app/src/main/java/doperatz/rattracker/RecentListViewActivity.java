@@ -3,7 +3,6 @@ package doperatz.rattracker;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,22 +12,15 @@ import android.widget.ListView;
 import doperatz.rattracker.Model.Model;
 import doperatz.rattracker.Model.RatReport;
 
-/**
- * Created by Josh on 10/10/2017.
- */
-
-
-
 public class RecentListViewActivity extends Activity {
 
-    ListView ratListView;
+    private ListView ratListView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
         Model model = Model.getInstance();
-        View recyclerView = findViewById(R.id.RatListView);
-        final ListAdapter ratListAdapter = new ArrayAdapter<RatReport>(this, android.R.layout.simple_list_item_1, model.getRecentRatReports());
-        ratListView = (ListView) findViewById(R.id.RatListView);
+        final ListAdapter ratListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, model.getRecentRatReports());
+        ratListView = findViewById(R.id.RatListView);
         ratListView.setAdapter(ratListAdapter);
 
         ratListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -43,13 +35,4 @@ public class RecentListViewActivity extends Activity {
             }
         });
     }
-
-    protected void onListBackPressed(View view) {
-        Log.d("Edit", "ListBack");
-        Intent intent = new Intent(this, StartUpActivity.class);
-        startActivity(intent);
-    }
-
-
-
 }

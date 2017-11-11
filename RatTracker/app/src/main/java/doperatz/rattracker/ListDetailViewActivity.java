@@ -5,34 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import doperatz.rattracker.Model.Model;
 import doperatz.rattracker.Model.RatReport;
-
-/**
- * Created by Josh on 10/10/2017.
- */
 
 public class ListDetailViewActivity extends Activity {
 
-    TextView uniqueKeyView;
-    TextView createdDateView;
-    TextView locationTypeView;
-    TextView incidentZipView;
-    TextView incidentAddressView;
-    TextView cityView;
-    TextView boroughView;
-    TextView latitudeView;
-    TextView longitudeView;
+
 
     /**
      * On Creation of ListDetailView, load text views with information
      * specific to the report in question.
-     * @param savedInstanceState
+     * @param savedInstanceState bundle that contains details for individual report
      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,19 +24,29 @@ public class ListDetailViewActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         RatReport thisReport = bundle.getParcelable("Report");
 
-        uniqueKeyView = (TextView) findViewById(R.id.uniqueKeyView);
-        createdDateView = (TextView) findViewById(R.id.createdDateView);
-        locationTypeView = (TextView) findViewById(R.id.locationTypeView);
-        incidentZipView = (TextView) findViewById(R.id.incidentZipView);
-        incidentAddressView = (TextView) findViewById(R.id.incidentAddressView);
-        cityView = (TextView) findViewById(R.id.cityView);
-        boroughView = (TextView) findViewById(R.id.boroughView);
-        latitudeView = (TextView) findViewById(R.id.latitudeView);
-        longitudeView = (TextView) findViewById(R.id.longitudeView);
+        TextView uniqueKeyView;
+        TextView createdDateView;
+        TextView locationTypeView;
+        TextView incidentZipView;
+        TextView incidentAddressView;
+        TextView cityView;
+        TextView boroughView;
+        TextView latitudeView;
+        TextView longitudeView;
+
+        uniqueKeyView = findViewById(R.id.uniqueKeyView);
+        createdDateView = findViewById(R.id.createdDateView);
+        locationTypeView = findViewById(R.id.locationTypeView);
+        incidentZipView = findViewById(R.id.incidentZipView);
+        incidentAddressView = findViewById(R.id.incidentAddressView);
+        cityView = findViewById(R.id.cityView);
+        boroughView = findViewById(R.id.boroughView);
+        latitudeView = findViewById(R.id.latitudeView);
+        longitudeView = findViewById(R.id.longitudeView);
 
 
 
-        uniqueKeyView.setText("Unique Key: " + thisReport.getUniqueKey());
+        uniqueKeyView.setText("Unique Key: " + (thisReport != null ? thisReport.getUniqueKey() : null));
         createdDateView.setText("Created Date: " + thisReport.getCreatedDate());
         locationTypeView.setText("Location Type: " + thisReport.getLocationType());
         incidentZipView.setText("Incident Zip: " + thisReport.getIncidentZip());
