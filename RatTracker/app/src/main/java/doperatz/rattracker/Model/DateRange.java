@@ -24,6 +24,9 @@ public class DateRange implements Parcelable {
     private final int year;
 
     public DateRange(int month, int day, int year) {
+        if (month < 1 | month > 12 | day < 0 | day > 31 | year < 1950) {
+            throw new IllegalArgumentException();
+        }
         this.day = day;
         this.month = month;
         this.year = year;
@@ -35,7 +38,9 @@ public class DateRange implements Parcelable {
      * @return an integer representing the comparison
      */
     public int compare(DateRange otherDate) {
-        if (year != otherDate.year) {
+        if (otherDate == null) {
+          throw new IllegalArgumentException();
+        } else if (year != otherDate.year) {
             return year - otherDate.year;
         } else if (month != otherDate.month) {
             return month - otherDate.month;
