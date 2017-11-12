@@ -61,6 +61,9 @@ public class Model {
      * @return if the user exists in the system
      */
     public boolean isUser(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("User cannot be null.");
+        }
         return (_users.contains(user));
     }
 
@@ -131,15 +134,6 @@ public class Model {
         rDatabase.child(report.getUniqueKey()).setValue(report);
     }
 
-    /**
-     * Adds a user using user properties
-     *
-     * @param name the user's name
-     * @param password the user's password
-     */
-    public void addUser(String name, String password, boolean isAdmin) {
-        _users.add(new User(name, password, isAdmin));
-    }
 
     /**
      * Given a user attempting to login, checks against original user's password
