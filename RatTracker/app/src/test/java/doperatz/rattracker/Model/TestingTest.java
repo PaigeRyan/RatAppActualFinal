@@ -53,21 +53,26 @@ public class TestingTest {
         assertFalse(model.isUser(notThere));
     }
 
+
+    /**
+     *  Tests user equals method
+     *  Rachel's JUNIT tests
+     */
     @Test
     public void testUserEqualsNull() {
-        boolean expctedValue = false;
         User user = new User("name", "password", true);
         assertFalse(user.equals(null));
-
     }
 
     @Test
     public void testUserEqualsNotUser() {
-        boolean expctedValue = false;
         User user = new User("name", "password", true);
-        boolean actual = user.equals(null);
-        assertFalse(actual);
-
+        User otherUser = new User("otherName", "password", true);
+        User anotherUser = new User("name", "otherPass", true);
+        User yetAnotherUser = new User("name", "password", false);
+        assertFalse(user.equals(otherUser));
+        assertFalse(user.equals(anotherUser));
+        assertFalse(user.equals(yetAnotherUser));
     }
 
 
