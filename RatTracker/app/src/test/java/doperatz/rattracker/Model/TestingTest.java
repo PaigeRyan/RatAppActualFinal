@@ -17,6 +17,8 @@ public class TestingTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    //Paige's JUnit tests for checkPassword
+    @Test
     public void testCheckPasswordException() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("User cannot be null.");
@@ -34,6 +36,7 @@ public class TestingTest {
     }
 
     //Josh's JUnit Tests for isUser
+    @Test
     public void testIsUserException() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("User cannot be null.");
@@ -48,34 +51,6 @@ public class TestingTest {
 
         assertTrue(model.isUser(there));
         assertFalse(model.isUser(notThere));
-    }
-
-
-    /**
-     * Tests the compare method in DateRange
-     */
-    @Test(expected = IllegalArgumentException.class)
-    public void testDateRangeNull() {
-        DateRange dateRange = new DateRange(1,1,1);
-        dateRange.compare(null);
-    }
-
-    /**
-     * Checks the constructor for the DateRange
-     */
-    @Test(expected = IllegalArgumentException.class)
-    public void testDateRangeNegative() {
-        DateRange dateRange = new DateRange(-3423, -23423, 23434);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testDateRangeIllegalMonth() {
-        DateRange dateRange = new DateRange(2, 14, 2014);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testDateRangeIllegalDay() {
-        DateRange dateRange = new DateRange(32, 4, 2013);
     }
 
     @Test
@@ -97,9 +72,57 @@ public class TestingTest {
 
 
 
+    /**
+     * Tests the compare method in DateRange
+     * Ethan's JUNIT Tests
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testDateRangeNull() {
+        DateRange dateRange = new DateRange(1,1,1);
+        dateRange.compare(null);
+    }
+
+    @Test
+    public void testDateRangeEquals() {
+        DateRange dateRange1 = new DateRange(1, 20, 98);
+        DateRange dateRange2 = new DateRange(1, 20, 98);
+        assertEquals(0, dateRange1.compare(dateRange2));
+    }
+
+    @Test
+    public void testDateRangeLesser() {
+        DateRange dateRange1 = new DateRange(3, 20, 98);
+        DateRange dateRange2 = new DateRange(1, 20, 98);
+        assertTrue(dateRange1.compare(dateRange2) < 0);
+    }
+
+    @Test
+    public void testDateRangeGreater() {
+        DateRange dateRange1 = new DateRange(1, 20, 98);
+        DateRange dateRange2 = new DateRange(3, 20, 98);
+        assertTrue(dateRange1.compare(dateRange2) > 0);
+    }
+
+    /**
+     * Checks the constructor for the DateRange
+     * Andrew's JUNIT Tests
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testDateRangeNegative() {
+        DateRange dateRange = new DateRange(-3423, -23423, 23434);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDateRangeIllegalMonth() {
+        DateRange dateRange = new DateRange(2, 14, 2014);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDateRangeIllegalDay() {
+        DateRange dateRange = new DateRange(32, 4, 2013);
+    }
 
 
-    //Ethan's JUnit Tests for
 
     //Rachel's JUnit Tests for
 
