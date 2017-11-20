@@ -19,8 +19,7 @@ public class Model {
     public static Model getInstance() {
         return _instance;
     }
-    private final DatabaseReference mDatabase;
-    private final DatabaseReference rDatabase;
+
 
 
     //list of Users in the system
@@ -33,15 +32,11 @@ public class Model {
         _users = new ArrayList<>();
         _reports = new ArrayList<>();
         _recentReports = new ArrayList<>();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("ratreportdata");
-        rDatabase = FirebaseDatabase.getInstance().getReference("recentreportdata");
+
         loadDefaultData();
     }
 
-    public DatabaseReference getDatabaseRef() {
-        return this.mDatabase;
-    }
-    public DatabaseReference getRecentRef() { return this.rDatabase; }
+
 
     /*
     Hard Coded user with
@@ -81,6 +76,9 @@ public class Model {
      * the value event listeners to detect changes of information.
      */
     public void loadInitialReports() {
+        DatabaseManager dbManager = new DatabaseManager();
+        DatabaseReference mDatabase = dbManager.getDatabaseRef();
+        DatabaseReference rDatabase = dbManager.getRecentRef();
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -130,6 +128,9 @@ public class Model {
      */
     public void addReport(RatReport report) {
         // Create child in appropriate folder
+        DatabaseManager dbManager = new DatabaseManager();
+        DatabaseReference mDatabase = dbManager.getDatabaseRef();
+        DatabaseReference rDatabase = dbManager.getRecentRef();
         mDatabase.child(report.getUniqueKey()).setValue(report);
         rDatabase.child(report.getUniqueKey()).setValue(report);
     }

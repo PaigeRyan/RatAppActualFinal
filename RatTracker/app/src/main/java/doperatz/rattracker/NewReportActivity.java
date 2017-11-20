@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.google.firebase.database.DatabaseReference;
 
+import doperatz.rattracker.Model.DatabaseManager;
 import doperatz.rattracker.Model.Model;
 import doperatz.rattracker.Model.RatReport;
 
@@ -22,7 +23,8 @@ public class NewReportActivity extends AppCompatActivity {
     private EditText longitude;
     private EditText latitude;
     private final Model model = Model.getInstance();
-    private final DatabaseReference appRef = model.getDatabaseRef();
+    private DatabaseManager dbManager = new DatabaseManager();
+    private final DatabaseReference appRef = dbManager.getDatabaseRef();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
